@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Юрий Павленко](https://up.htmlacademy.ru/ecmascript/3/user/413203).
-* Наставник: `Неизвестно`.
+* Наставник: Иван Пухтин.
 
 ---
 
