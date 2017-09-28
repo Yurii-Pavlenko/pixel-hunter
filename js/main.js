@@ -13,16 +13,15 @@ const screenTemplates = [greeting, rules, game1, game2, game3, stats];
 
 let activeTemplateNumber = 0;
 
+// Function showing screens
 const showScreen = (number) => {
-  if (screenTemplates[number]) {
-    let activeScreen = screenTemplates[number].content.cloneNode(true);
-    mainCentral.innerHTML = ``;
-    mainCentral.appendChild(activeScreen);
-    activeTemplateNumber = number;
-  }
+  mainCentral.innerHTML = screenTemplates[number].innerHTML;
 };
+
+// Showing first screen
 showScreen(activeTemplateNumber);
 
+// Switch screens handler
 const onButtonPush = (evt) => {
   if (evt.altKey && evt.keyCode === LEFT_ARROW && activeTemplateNumber > 0) {
     showScreen(--activeTemplateNumber);
