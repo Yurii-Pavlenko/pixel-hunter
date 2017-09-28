@@ -9,7 +9,7 @@ const game2 = document.querySelector(`#game-2`);
 const game3 = document.querySelector(`#game-3`);
 const stats = document.querySelector(`#stats`);
 
-const screenTemplates = [greeting, rules, game1, game2, game3, stats];
+const screenTemplates = [mainCentral, greeting, rules, game1, game2, game3, stats];
 
 let activeTemplateNumber = 0;
 
