@@ -2,6 +2,7 @@ const LEFT_ARROW = 37;
 const RIGHT_ARROW = 39;
 
 const mainCentral = document.querySelector(`.central`);
+const mainScreen = document.querySelector(`.central`).cloneNode(true);
 const greeting = document.querySelector(`#greeting`);
 const rules = document.querySelector(`#rules`);
 const game1 = document.querySelector(`#game-1`);
@@ -9,7 +10,7 @@ const game2 = document.querySelector(`#game-2`);
 const game3 = document.querySelector(`#game-3`);
 const stats = document.querySelector(`#stats`);
 
-const screenTemplates = [mainCentral, greeting, rules, game1, game2, game3, stats];
+const screenTemplates = [mainScreen, greeting, rules, game1, game2, game3, stats];
 
 let activeTemplateNumber = 0;
 
