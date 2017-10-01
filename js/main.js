@@ -1,28 +1,9 @@
-const LEFT_ARROW = 37;
-const RIGHT_ARROW = 39;
+import showScreen from "./screenRenderer";
+import intro from "./intro";
 
-const mainCentral = document.querySelector(`.central`);
-const mainScreen = document.querySelector(`.central`).cloneNode(true);
-const greeting = document.querySelector(`#greeting`);
-const rules = document.querySelector(`#rules`);
-const game1 = document.querySelector(`#game-1`);
-const game2 = document.querySelector(`#game-2`);
-const game3 = document.querySelector(`#game-3`);
-const stats = document.querySelector(`#stats`);
+showScreen(intro);
 
-const screenTemplates = [mainScreen, greeting, rules, game1, game2, game3, stats];
-
-let activeTemplateNumber = 0;
-
-// Function showing screens
-const showScreen = (number) => {
-  mainCentral.innerHTML = screenTemplates[number].innerHTML;
-};
-
-// Showing first screen
-showScreen(activeTemplateNumber);
-
-// Switch screens handler
+/* // Switch screens handler
 const onButtonPush = (evt) => {
   if (evt.altKey && evt.keyCode === LEFT_ARROW && activeTemplateNumber > 0) {
     showScreen(--activeTemplateNumber);
@@ -33,5 +14,5 @@ const onButtonPush = (evt) => {
   }
 };
 
-document.addEventListener(`keydown`, onButtonPush);
+document.addEventListener(`keydown`, onButtonPush);*/
 
