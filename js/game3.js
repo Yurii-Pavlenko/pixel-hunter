@@ -1,4 +1,7 @@
 import getElementFromTemplate from "./util";
+import onNextButtonClick from "./clickHandler";
+import greeting from "./greeting";
+import stats from "./stats";
 
 const game3 = getElementFromTemplate(`
   <header class="header">
@@ -54,5 +57,16 @@ const game3 = getElementFromTemplate(`
     </div>
   </footer>
 `);
+const headerBack = game3.querySelector(`.header__back`);
+const gameContent = game3.querySelector(`.game__content`);
+
+gameContent.addEventListener(`click`, (evt) => {
+  onNextButtonClick(evt, stats);
+
+});
+
+headerBack.addEventListener(`click`, (evt) => {
+  onNextButtonClick(evt, greeting);
+});
 
 export default game3;

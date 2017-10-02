@@ -1,4 +1,7 @@
 import getElementFromTemplate from "./util";
+import onNextButtonClick from "./clickHandler";
+import greeting from "./greeting";
+import game1 from "./game1";
 
 const rules = getElementFromTemplate(`
   <header class="header">
@@ -36,6 +39,22 @@ const rules = getElementFromTemplate(`
     </div>
   </footer>
 `);
+const headerBack = rules.querySelector(`.header__back`);
+const rulesForm = rules.querySelector(`.rules__form`);
+const rulesInput = rulesForm.querySelector(`.rules__input`);
+const rulesButton = rulesForm.querySelector(`.rules__button`);
+
+rulesInput.addEventListener(`input`, () => {
+  rulesButton.disabled = !rulesInput.value;
+});
+
+rulesForm.addEventListener(`submit`, (evt) => {
+  onNextButtonClick(evt, game1);
+});
+
+headerBack.addEventListener(`click`, (evt) => {
+  onNextButtonClick(evt, greeting);
+});
 
 export default rules;
 

@@ -1,4 +1,6 @@
 import getElementFromTemplate from "./util";
+import greeting from "./greeting";
+import onNextButtonClick from "./clickHandler";
 
 const intro = getElementFromTemplate(`
 <div id="main" class="central__content">
@@ -20,10 +22,8 @@ const intro = getElementFromTemplate(`
 `);
 const asteriskButton = intro.querySelector(`.intro__asterisk`);
 
-const onAsteriskButtonClick = (evt) => {
-
-};
-
-asteriskButton.addEventListener(`click`, onAsteriskButtonClick);
+asteriskButton.addEventListener(`click`, (evt) => {
+  onNextButtonClick(evt, greeting);
+});
 
 export default intro;

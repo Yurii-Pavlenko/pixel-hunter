@@ -1,4 +1,7 @@
 import getElementFromTemplate from "./util";
+import onNextButtonClick from "./clickHandler";
+import greeting from "./greeting";
+import game2 from "./game2";
 
 const game1 = getElementFromTemplate(`
   <header class="header">
@@ -67,5 +70,22 @@ const game1 = getElementFromTemplate(`
     </div>
   </footer>
 `);
+const headerBack = game1.querySelector(`.header__back`);
+const gameContent = game1.querySelector(`.game__content`);
+const rightAnswersNumber = 2;
+
+const answers = () => {
+  return gameContent.querySelectorAll(`input[type="radio"]:checked`).length;
+};
+
+gameContent.addEventListener(`change`, (evt) => {
+  if (answers() === rightAnswersNumber) {
+    onNextButtonClick(evt, game2);
+  }
+});
+
+headerBack.addEventListener(`click`, (evt) => {
+  onNextButtonClick(evt, greeting);
+});
 
 export default game1;

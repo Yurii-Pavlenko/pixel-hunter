@@ -1,4 +1,6 @@
 import getElementFromTemplate from "./util";
+import rules from "./rules";
+import onNextButtonClick from "./clickHandler";
 
 const greeting = getElementFromTemplate(`
  <div class="greeting central--blur">
@@ -25,6 +27,11 @@ const greeting = getElementFromTemplate(`
     </div>
   </footer>
 `);
+const greetingContinue = greeting.querySelector(`.greeting__continue`);
+
+greetingContinue.addEventListener(`click`, (evt) => {
+  onNextButtonClick(evt, rules);
+});
 
 export default greeting;
 

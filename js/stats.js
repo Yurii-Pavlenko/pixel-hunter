@@ -1,4 +1,6 @@
 import getElementFromTemplate from "./util";
+import onNextButtonClick from "./clickHandler";
+import greeting from "./greeting";
 
 const stats = getElementFromTemplate(`
   <header class="header">
@@ -120,5 +122,10 @@ const stats = getElementFromTemplate(`
     </div>
   </footer>
   `);
+const headerBack = stats.querySelector(`.header__back`);
+
+headerBack.addEventListener(`click`, (evt) => {
+  onNextButtonClick(evt, greeting);
+});
 
 export default stats;
