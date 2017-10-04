@@ -1,9 +1,9 @@
-import getElementFromTemplate from "./util";
-import onNextButtonClick from "./clickHandler";
+import getElementFromTemplate from "../utils/get-element-from-html";
+import onNextButtonClick from "../utils/show-screen-handler";
 import greeting from "./greeting";
-import stats from "./stats";
+import game2 from "./game2";
 
-const game3 = getElementFromTemplate(`
+const game1 = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -19,16 +19,29 @@ const game3 = getElementFromTemplate(`
     </div>
   </header>
   <div class="game">
-    <p class="game__task">Найдите рисунок среди изображений</p>
-    <form class="game__content  game__content--triple">
+    <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
+    <form class="game__content">
       <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-      </div>
-      <div class="game__option  game__option--selected">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+        <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
+        <label class="game__answer game__answer--photo">
+          <input name="question1" type="radio" value="photo">
+          <span>Фото</span>
+        </label>
+        <label class="game__answer game__answer--paint">
+          <input name="question1" type="radio" value="paint">
+          <span>Рисунок</span>
+        </label>
       </div>
       <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+        <img src="http://placehold.it/468x458" alt="Option 2" width="468" height="458">
+        <label class="game__answer  game__answer--photo">
+          <input name="question2" type="radio" value="photo">
+          <span>Фото</span>
+        </label>
+        <label class="game__answer  game__answer--paint">
+          <input name="question2" type="radio" value="paint">
+          <span>Рисунок</span>
+        </label>
       </div>
     </form>
     <div class="stats">
@@ -37,11 +50,11 @@ const game3 = getElementFromTemplate(`
         <li class="stats__result stats__result--slow"></li>
         <li class="stats__result stats__result--fast"></li>
         <li class="stats__result stats__result--correct"></li>
-        <li class="stats__result stats__result--wrong"></li>
         <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--slow"></li>
         <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--fast"></li>
+        <li class="stats__result stats__result--unknown"></li>
+        <li class="stats__result stats__result--unknown"></li>
+        <li class="stats__result stats__result--unknown"></li>
         <li class="stats__result stats__result--unknown"></li>
       </ul>
     </div>
@@ -57,16 +70,22 @@ const game3 = getElementFromTemplate(`
     </div>
   </footer>
 `);
-const headerBack = game3.querySelector(`.header__back`);
-const gameContent = game3.querySelector(`.game__content`);
+const headerBack = game1.querySelector(`.header__back`);
+const gameContent = game1.querySelector(`.game__content`);
+const rightAnswersNumber = 2;
 
-gameContent.addEventListener(`click`, (evt) => {
-  onNextButtonClick(evt, stats);
+const answers = () => {
+  return gameContent.querySelectorAll(`input[type="radio"]:checked`).length;
+};
 
+gameContent.addEventListener(`change`, (evt) => {
+  if (answers() === rightAnswersNumber) {
+    onNextButtonClick(evt, game2);
+  }
 });
 
 headerBack.addEventListener(`click`, (evt) => {
   onNextButtonClick(evt, greeting);
 });
 
-export default game3;
+export default game1;

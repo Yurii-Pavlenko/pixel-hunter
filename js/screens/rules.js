@@ -1,7 +1,8 @@
-import getElementFromTemplate from "./util";
-import onNextButtonClick from "./clickHandler";
-import greeting from "./greeting";
+import getElementFromTemplate from "../utils/get-element-from-html";
+import onNextButtonClick from "../utils/show-screen-handler";
+// import greeting from "./greeting";
 import game1 from "./game1";
+import returnToGreeting from "../utils/return-to-greeting";
 
 const rules = getElementFromTemplate(`
   <header class="header">
@@ -52,9 +53,10 @@ rulesForm.addEventListener(`submit`, (evt) => {
   onNextButtonClick(evt, game1);
 });
 
-headerBack.addEventListener(`click`, (evt) => {
+/* headerBack.addEventListener(`click`, (evt) => {
   onNextButtonClick(evt, greeting);
-});
+});*/
+
+returnToGreeting(headerBack);
 
 export default rules;
-

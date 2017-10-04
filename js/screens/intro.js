@@ -1,6 +1,6 @@
-import getElementFromTemplate from "./util";
+import getElementFromTemplate from "../utils/get-element-from-html";
 import greeting from "./greeting";
-import onNextButtonClick from "./clickHandler";
+import onNextButtonClick from "../utils/show-screen-handler";
 
 const intro = getElementFromTemplate(`
 <div id="main" class="central__content">

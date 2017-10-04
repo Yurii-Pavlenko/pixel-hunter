@@ -1,5 +1,5 @@
-import getElementFromTemplate from "./util";
-import onNextButtonClick from "./clickHandler";
+import getElementFromTemplate from "../utils/get-element-from-html";
+import onNextButtonClick from "../utils/show-screen-handler";
 import greeting from "./greeting";
 import game3 from "./game3";
 

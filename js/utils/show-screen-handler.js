@@ -1,4 +1,4 @@
-import showScreen from "./screenRenderer";
+import showScreen from "./screen-renderer";
 
 const onNextButtonClick = (evt, nextScreen) => {
   evt.preventDefault();

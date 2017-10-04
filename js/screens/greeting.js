@@ -1,6 +1,6 @@
-import getElementFromTemplate from "./util";
+import getElementFromTemplate from "../utils/get-element-from-html";
 import rules from "./rules";
-import onNextButtonClick from "./clickHandler";
+import onNextButtonClick from "../utils/show-screen-handler";
 
 const greeting = getElementFromTemplate(`
  <div class="greeting central--blur">
@@ -34,4 +34,3 @@ greetingContinue.addEventListener(`click`, (evt) => {
 });
 
 export default greeting;
-
