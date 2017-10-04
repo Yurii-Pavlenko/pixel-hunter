@@ -67,7 +67,7 @@ const answers = () => {
 };
 
 gameContent.addEventListener(`change`, (evt) => {
-  if (answers() !== 0) {
+  if (answers()) {
     onNextButtonClick(evt, game3);
   }
 });
