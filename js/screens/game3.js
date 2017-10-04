@@ -62,7 +62,6 @@ const gameContent = game3.querySelector(`.game__content`);
 
 gameContent.addEventListener(`click`, (evt) => {
   onNextButtonClick(evt, stats);
-
 });
 
 returnToGreeting(headerBack);
