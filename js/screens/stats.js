@@ -1,6 +1,5 @@
 import getElementFromTemplate from "../utils/get-element-from-html";
-import onNextButtonClick from "../utils/show-screen-handler";
-import greeting from "./greeting";
+import returnToGreeting from "../utils/return-to-greeting";
 
 const stats = getElementFromTemplate(`
   <header class="header">
@@ -124,8 +123,6 @@ const stats = getElementFromTemplate(`
   `);
 const headerBack = stats.querySelector(`.header__back`);
 
-headerBack.addEventListener(`click`, (evt) => {
-  onNextButtonClick(evt, greeting);
-});
+returnToGreeting(headerBack);
 
 export default stats;

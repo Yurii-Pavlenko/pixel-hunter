@@ -1,6 +1,6 @@
 import getElementFromTemplate from "../utils/get-element-from-html";
 import onNextButtonClick from "../utils/show-screen-handler";
-import greeting from "./greeting";
+import returnToGreeting from "../utils/return-to-greeting";
 import stats from "./stats";
 
 const game3 = getElementFromTemplate(`
@@ -65,8 +65,6 @@ gameContent.addEventListener(`click`, (evt) => {
 
 });
 
-headerBack.addEventListener(`click`, (evt) => {
-  onNextButtonClick(evt, greeting);
-});
+returnToGreeting(headerBack);
 
 export default game3;

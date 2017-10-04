@@ -1,5 +1,5 @@
 import onNextButtonClick from "../utils/show-screen-handler";
-import greeting from "./greeting";
+import greeting from "../screens/greeting";
 
 const returnToGreeting = (headerBack) => {
   headerBack.addEventListener(`click`, (evt) => {

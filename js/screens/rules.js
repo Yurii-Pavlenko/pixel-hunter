@@ -1,6 +1,5 @@
 import getElementFromTemplate from "../utils/get-element-from-html";
 import onNextButtonClick from "../utils/show-screen-handler";
-// import greeting from "./greeting";
 import game1 from "./game1";
 import returnToGreeting from "../utils/return-to-greeting";
 
@@ -52,10 +51,6 @@ rulesInput.addEventListener(`input`, () => {
 rulesForm.addEventListener(`submit`, (evt) => {
   onNextButtonClick(evt, game1);
 });
-
-/* headerBack.addEventListener(`click`, (evt) => {
-  onNextButtonClick(evt, greeting);
-});*/
 
 returnToGreeting(headerBack);
 
