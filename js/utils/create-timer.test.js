@@ -19,5 +19,6 @@ describe(`TIMER FUNCTION`, () => {
   it(`should return "TIME IS OVER" if time < 0`, () => {
     assert.equal(createTimer(1).tick().time, 0);
     assert.equal(createTimer(0).tick(), `time is over`);
+    assert.equal(createTimer(-1).tick(), `time is over`);
   });
 });
