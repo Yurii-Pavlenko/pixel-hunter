@@ -13,7 +13,7 @@ const countScore = (answers, amountOfLives) => {
     fast: 0,
     right: 0,
     slow: 0,
-    false: 0
+    wrong: 0
   };
 
   if (answers.length < arrayLength && !amountOfLives) {
@@ -22,7 +22,7 @@ const countScore = (answers, amountOfLives) => {
 
   answers.forEach((item) => {
     if (item < 0) {
-      quantity.false += 1;
+      quantity.wrong += 1;
     } else if (item < maxFastAnswerValue) {
       quantity.fast += 1;
     } else if (item >= maxFastAnswerValue && item <= minSlowAnswerValue) {
@@ -50,7 +50,7 @@ const countScore = (answers, amountOfLives) => {
     }
   };
 
-  return quantity.false > maxFalsyAnswersAmount ? -1 : scoreFor.allAnswers();
+  return quantity.wrong > maxFalsyAnswersAmount ? -1 : scoreFor.allAnswers();
 };
 
 export default countScore;
