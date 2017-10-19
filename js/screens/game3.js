@@ -1,69 +1,37 @@
 import getElementFromTemplate from "../utils/get-element-from-html";
 import onNextButtonClick from "../utils/show-screen-handler";
-import returnToGreeting from "../utils/return-to-greeting";
-import stats from "./stats";
+import gameHeader from "./game-header";
+import gameStats from "./game-stats";
 
-const game3 = getElementFromTemplate(`
-  <header class="header">
-    <div class="header__back">
-      <button class="back">
-        <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-        <img src="img/logo_small.svg" width="101" height="44">
-      </button>
-    </div>
-    <h1 class="game__timer">NN</h1>
-    <div class="game__lives">
-      <img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
-    </div>
-  </header>
+export default (data) => {
+  const game3 = getElementFromTemplate(`
+  ${gameHeader(data.state)}
   <div class="game">
-    <p class="game__task">Найдите рисунок среди изображений</p>
+    <p class="game__task">${data.game3.description}</p>
     <form class="game__content  game__content--triple">
       <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+        <img src=${data.pictures[data.state.game].imgSrc} alt="Option 1" width="304" height="455">
       </div>
       <div class="game__option  game__option--selected">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+        <img src=${data.pictures[data.state.game + 1].imgSrc} alt="Option 1" width="304" height="455">
       </div>
       <div class="game__option">
-        <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
+        <img src=${data.pictures[data.state.game + 2].imgSrc} alt="Option 1" width="304" height="455">
       </div>
     </form>
-    <div class="stats">
-      <ul class="stats">
-        <li class="stats__result stats__result--wrong"></li>
-        <li class="stats__result stats__result--slow"></li>
-        <li class="stats__result stats__result--fast"></li>
-        <li class="stats__result stats__result--correct"></li>
-        <li class="stats__result stats__result--wrong"></li>
-        <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--slow"></li>
-        <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--fast"></li>
-        <li class="stats__result stats__result--unknown"></li>
-      </ul>
-    </div>
+    ${gameStats(data)}
   </div>
-  <footer class="footer">
-    <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
-    <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2016</span>
-    <div class="footer__social-links">
-      <a href="https://twitter.com/htmlacademy_ru" class="social-link  social-link--tw">Твиттер</a>
-      <a href="https://www.instagram.com/htmlacademy/" class="social-link  social-link--ins">Инстаграм</a>
-      <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
-      <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
-    </div>
-  </footer>
 `);
-const headerBack = game3.querySelector(`.header__back`);
-const gameContent = game3.querySelector(`.game__content`);
+  const headerBack = game3.querySelector(`.header__back`);
+  const gameContent = game3.querySelector(`.game__content`);
 
-gameContent.addEventListener(`click`, (evt) => {
-  onNextButtonClick(evt, stats);
-});
+  gameContent.addEventListener(`click`, (evt) => {
+    onNextButtonClick(evt, data.game3.jumpTo.next(data));
+  });
 
-returnToGreeting(headerBack);
+  headerBack.addEventListener(`click`, (evt) => {
+    onNextButtonClick(evt, data.game3.jumpTo.back(data));
+  });
 
-export default game3;
+  return game3;
+};
