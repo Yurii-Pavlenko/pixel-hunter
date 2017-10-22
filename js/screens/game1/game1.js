@@ -1,16 +1,18 @@
-import getElementFromTemplate from "../utils/get-element-from-html";
-import onNextButtonClick from "../utils/show-screen-handler";
-import gameHeader from "./game-header";
-import gameStats from "./game-stats";
+import getElementFromTemplate from "../../utils/get-element-from-html";
+import onNextButtonClick from "../../utils/show-screen-handler";
+import gameHeader from "../game-header";
+import gameStats from "../game-stats";
+import data from "../play-data";
+import {game1Data, renderAnswers} from "./game1-data";
 
-export default (data) => {
+export default () => {
   const game1 = getElementFromTemplate(`
   ${gameHeader(data.state)}
   <div class="game">
-    <p class="game__task">${data.game1.description}</p>
+    <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
     <form class="game__content">
       <div class="game__option">
-        <img src=${data.pictures[data.state.game].imgSrc} alt="Option 1" width="468" height="458">
+        <img src=${game1Data.pictures[data.state.game].imgSrc} alt="Option 1" width="468" height="458">
         <label class="game__answer game__answer--photo">
           <input name="question1" type="radio" value="photo">
           <span>Фото</span>
@@ -21,7 +23,7 @@ export default (data) => {
         </label>
       </div>
       <div class="game__option">
-        <img src=${data.pictures[data.state.game + 1].imgSrc} alt="Option 2" width="468" height="458">
+        <img src=${game1Data.pictures[data.state.game + 1].imgSrc} alt="Option 2" width="468" height="458">
         <label class="game__answer  game__answer--photo">
           <input name="question2" type="radio" value="photo">
           <span>Фото</span>
@@ -37,7 +39,10 @@ export default (data) => {
 `);
   const headerBack = game1.querySelector(`.header__back`);
   const gameContent = game1.querySelector(`.game__content`);
-  const answersQuantity = 2;
+  const question1 = game1.querySelectorAll(`input[name=question1]`);
+  const question2 = game1.querySelectorAll(`input[name=question2]`);
+  const enoughQuantity = 2;
+  const getOffGame = 4;
   const quantity = {
     unknownAnswers: data.state.answers.filter((element) =>{
       return element === `unknown`;
@@ -47,23 +52,24 @@ export default (data) => {
     })
   };
 
-  const answers = () => {
+
+  const needQuantity = () => {
     return gameContent.querySelectorAll(`input[type="radio"]:checked`).length;
   };
-  // && quantity.wrongAnswers.length < 4 && quantity.unknownAnswers.length
+
   gameContent.addEventListener(`change`, (evt) => {
-    if (!quantity.unknownAnswers.length && answers() === answersQuantity) {
-      onNextButtonClick(evt, data.game1.jumpTo.end(data));
-    } else if (quantity.wrongAnswers.length === 4 && answers() === answersQuantity) {
-      onNextButtonClick(evt, data.game1.jumpTo.end(data));
-    } else if (answers() === answersQuantity) {
-      onNextButtonClick(evt, data.game1.jumpTo.next(data));
+    if (!quantity.unknownAnswers.length && needQuantity() === enoughQuantity ||
+      quantity.wrongAnswers.length === getOffGame && needQuantity() === enoughQuantity) {
+      onNextButtonClick(evt, game1Data.jumpTo.end(data));
+    } else if (needQuantity() === enoughQuantity) {
+      renderAnswers(question1, question2, game1Data);
       data.state.game += 2;
+      onNextButtonClick(evt, game1Data.jumpTo.next(data));
     }
   });
 
   headerBack.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, data.game1.jumpTo.back(data));
+    onNextButtonClick(evt, game1Data.jumpTo.back(data));
   });
 
   return game1;

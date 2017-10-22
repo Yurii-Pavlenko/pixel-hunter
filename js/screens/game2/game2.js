@@ -1,16 +1,18 @@
-import getElementFromTemplate from "../utils/get-element-from-html";
-import onNextButtonClick from "../utils/show-screen-handler";
-import gameHeader from "./game-header";
-import gameStats from "./game-stats";
+import getElementFromTemplate from "../../utils/get-element-from-html";
+import onNextButtonClick from "../../utils/show-screen-handler";
+import gameHeader from "../game-header";
+import gameStats from "../game-stats";
+import {game2Date} from "./game2-data";
+import data from "../play-data";
 
-export default (data) => {
+export default () => {
   const game2 = getElementFromTemplate(`
   ${gameHeader(data.state)}
   <div class="game">
-    <p class="game__task">${data.game2.description}</p>
+    <p class="game__task">${game2Date.description}</p>
     <form class="game__content  game__content--wide">
       <div class="game__option">
-        <img src=${data.pictures[data.state.game].imgSrc} alt="Option 1" width="705" height="455">
+        <img src=${game2Date.pictures[data.state.game].imgSrc} alt="Option 1" width="705" height="455">
         <label class="game__answer  game__answer--photo">
           <input name="question1" type="radio" value="photo">
           <span>Фото</span>
@@ -33,12 +35,12 @@ export default (data) => {
 
   gameContent.addEventListener(`change`, (evt) => {
     if (answers()) {
-      onNextButtonClick(evt, data.game2.jumpTo.next(data));
+      onNextButtonClick(evt, game2Date.jumpTo.next(game2Date));
     }
   });
 
   headerBack.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, data.game2.jumpTo.back(data));
+    onNextButtonClick(evt, game2Date.jumpTo.back(game2Date));
   });
 
   return game2;

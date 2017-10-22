@@ -1,7 +1,8 @@
-import getElementFromTemplate from "../utils/get-element-from-html";
-import onNextButtonClick from "../utils/show-screen-handler";
+import getElementFromTemplate from "../../utils/get-element-from-html";
+import onNextButtonClick from "../../utils/show-screen-handler";
+import {statsData} from "./stats-data";
 
-export default(data) => {
+export default() => {
   const stats = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
@@ -115,7 +116,7 @@ export default(data) => {
   const headerBack = stats.querySelector(`.header__back`);
 
   headerBack.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, data.stats.jumpTo.back(data));
+    onNextButtonClick(evt, statsData.jumpTo.back(statsData));
   });
 
   return stats;
