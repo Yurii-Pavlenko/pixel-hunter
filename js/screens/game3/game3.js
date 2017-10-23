@@ -4,6 +4,8 @@ import gameHeader from "../game-header";
 import gameStats from "../game-stats";
 import {game3Data} from "./game3-data";
 import data from "../play-data";
+import greeting from "../greeting/greeting";
+import game1 from "../game1/game1";
 
 export default () => {
   const game3 = getElementFromTemplate(`
@@ -28,11 +30,11 @@ export default () => {
   const gameContent = game3.querySelector(`.game__content`);
 
   gameContent.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, game3Data.jumpTo.next(game3Data));
+    onNextButtonClick(evt, game1());
   });
 
   headerBack.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, game3Data.jumpTo.back(game3Data));
+    onNextButtonClick(evt, greeting());
   });
 
   return game3;

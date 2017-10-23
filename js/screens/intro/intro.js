@@ -1,7 +1,8 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
 import onNextButtonClick from "../../utils/show-screen-handler";
+import greeting from "../greeting/greeting";
 
-export default (data) => {
+export default () => {
 
   const intro = getElementFromTemplate(`
 <div id="main" class="central__content">
@@ -15,7 +16,7 @@ export default (data) => {
   const asteriskButton = intro.querySelector(`.intro__asterisk`);
 
   asteriskButton.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, data.jumpTo.next(data));
+    onNextButtonClick(evt, greeting());
   });
 
   return intro;

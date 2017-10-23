@@ -4,6 +4,6 @@ import greeting from "../greeting/greeting";
 export default {
   jumpTo: {
     next: game1,
-    greetSheet: greeting
+    back: greeting
   }
 };

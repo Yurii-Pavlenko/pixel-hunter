@@ -1,6 +1,7 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
 import onNextButtonClick from "../../utils/show-screen-handler";
-import greetingData from "./greeting-data";
+// import greetingData from "./greeting-data";
+import rules from "../rules/rules";
 
 export default () => {
   const greeting = getElementFromTemplate(`
@@ -22,7 +23,7 @@ export default () => {
   const greetingContinue = greeting.querySelector(`.greeting__continue`);
 
   greetingContinue.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, greetingData.jumpTo.next(greetingData));
+    onNextButtonClick(evt, rules());
   });
 
   return greeting;

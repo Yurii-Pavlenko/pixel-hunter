@@ -4,6 +4,9 @@ import gameHeader from "../game-header";
 import gameStats from "../game-stats";
 import data from "../play-data";
 import {game1Data, renderAnswers} from "./game1-data";
+import greeting from "../greeting/greeting";
+import game2 from "../game2/game2";
+import stats from "../stats/stats";
 
 export default () => {
   const game1 = getElementFromTemplate(`
@@ -60,16 +63,16 @@ export default () => {
   gameContent.addEventListener(`change`, (evt) => {
     if (!quantity.unknownAnswers.length && needQuantity() === enoughQuantity ||
       quantity.wrongAnswers.length === getOffGame && needQuantity() === enoughQuantity) {
-      onNextButtonClick(evt, game1Data.jumpTo.end(data));
+      onNextButtonClick(evt, stats());
     } else if (needQuantity() === enoughQuantity) {
       renderAnswers(question1, question2, game1Data);
       data.state.game += 2;
-      onNextButtonClick(evt, game1Data.jumpTo.next(data));
+      onNextButtonClick(evt, game2());
     }
   });
 
   headerBack.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, game1Data.jumpTo.back(data));
+    onNextButtonClick(evt, greeting());
   });
 
   return game1;

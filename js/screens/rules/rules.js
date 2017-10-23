@@ -1,6 +1,8 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
 import onNextButtonClick from "../../utils/show-screen-handler";
-import rulesData from "./rules-data";
+// import rulesData from "./rules-data";
+import game1 from "../game1/game1";
+import greeting from "../greeting/greeting";
 
 export default () => {
   const rules = getElementFromTemplate(`
@@ -39,11 +41,11 @@ export default () => {
   });
 
   rulesForm.addEventListener(`submit`, (evt) => {
-    onNextButtonClick(evt, rulesData.jumpTo.next(rulesData));
+    onNextButtonClick(evt, game1());
   });
 
   headerBack.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, rulesData.jumpTo.greetSheet(rulesData));
+    onNextButtonClick(evt, greeting());
   });
 
   return rules;

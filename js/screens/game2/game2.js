@@ -4,6 +4,8 @@ import gameHeader from "../game-header";
 import gameStats from "../game-stats";
 import {game2Date} from "./game2-data";
 import data from "../play-data";
+import greeting from "../greeting/greeting";
+import game3 from "../game3/game3";
 
 export default () => {
   const game2 = getElementFromTemplate(`
@@ -35,12 +37,12 @@ export default () => {
 
   gameContent.addEventListener(`change`, (evt) => {
     if (answers()) {
-      onNextButtonClick(evt, game2Date.jumpTo.next(game2Date));
+      onNextButtonClick(evt, game3());
     }
   });
 
   headerBack.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, game2Date.jumpTo.back(game2Date));
+    onNextButtonClick(evt, greeting());
   });
 
   return game2;

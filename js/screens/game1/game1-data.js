@@ -70,6 +70,7 @@ export const renderAnswers = (question1, question2) => {
       return element === `unknown`;
     });
     data.state.answers[index] = `wrong`;
+    data.state.lives -= 1;
   }
 };
 
