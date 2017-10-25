@@ -1,6 +1,7 @@
 import game1 from "../game1/game1";
 import greeting from "../greeting/greeting";
 import stats from "../stats/stats";
+import {stateData} from "../play-data";
 
 export const game3Data = {
   description: `Найдите рисунок среди изображений`,
@@ -48,4 +49,21 @@ export const game3Data = {
       imgType: `paint`
     }
   ]
+};
+
+export const renderAnswers3 = (questions, answers) => {
+  if (answers.forEach((elem, i) =>{
+    return elem === questions[i];
+  })) {
+    const index = stateData.answers.findIndex((element) => {
+      return element === `unknown`;
+    });
+    stateData.answers[index] = `correct`;
+  } else {
+    const index = stateData.answers.findIndex((element) => {
+      return element === `unknown`;
+    });
+    stateData.answers[index] = `wrong`;
+    stateData.lives -= 1;
+  }
 };
