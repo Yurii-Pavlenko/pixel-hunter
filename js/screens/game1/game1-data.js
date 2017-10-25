@@ -1,7 +1,8 @@
 import game2 from "../game2/game2";
 import greeting from "../greeting/greeting";
 import stats from "../stats/stats";
-import data from "../play-data";
+import {stateData} from "../play-data";
+// import renderScreen from "../../utils/screen-renderer";
 
 export const game1Data = {
   description: `Угадайте для каждого изображения фото или рисунок?`,
@@ -47,9 +48,21 @@ export const game1Data = {
   ]
 };
 
-export const renderAnswers = (question1, question2) => {
+
+
+/* const quantity = {
+  unknownAnswers: data.state.answers.filter((element) =>{
+    return element === `unknown`;
+  }),
+  wrongAnswers: data.state.answers.filter((element) =>{
+    return element === `wrong`;
+  })
+};*/
+
+export const renderAnswers1 = (question1, question2) => {
   let answer1 = false;
   let answer2 = false;
+
   for (let i = 0; i < question1.length; i++) {
     if (question1[i].checked) {
       answer1 = question1[i].getAttribute(`value`);
@@ -60,17 +73,17 @@ export const renderAnswers = (question1, question2) => {
       answer2 = question2[i].getAttribute(`value`);
     }
   }
-  if (answer1 === game1Data.pictures[data.state.game].imgType && answer2 === game1Data.pictures[data.state.game + 1].imgType) {
-    const index = data.state.answers.findIndex((element) => {
+  if (answer1 === game1Data.pictures[stateData.game].imgType && answer2 === game1Data.pictures[stateData.game + 1].imgType) {
+    const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
     });
-    data.state.answers[index] = `correct`;
+    stateData.answers[index] = `correct`;
   } else {
-    const index = data.state.answers.findIndex((element) => {
+    const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
     });
-    data.state.answers[index] = `wrong`;
-    data.state.lives -= 1;
+    stateData.answers[index] = `wrong`;
+    stateData.lives -= 1;
   }
 };
 

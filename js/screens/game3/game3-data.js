@@ -51,8 +51,8 @@ export const game3Data = {
   ]
 };
 
-export const renderAnswers3 = (questions, answers) => {
-  if (answers.forEach((elem, i) =>{
+export const renderAnswers3 = (questions, answers3) => {
+  if (answers3.forEach((elem, i) =>{
     return elem === questions[i];
   })) {
     const index = stateData.answers.findIndex((element) => {

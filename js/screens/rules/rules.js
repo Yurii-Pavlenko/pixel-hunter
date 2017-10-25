@@ -3,6 +3,7 @@ import onNextButtonClick from "../../utils/show-screen-handler";
 // import rulesData from "./rules-data";
 import game1 from "../game1/game1";
 import greeting from "../greeting/greeting";
+import renderScreen from "../../utils/screen-renderer";
 
 export default () => {
   const rules = getElementFromTemplate(`
@@ -43,10 +44,13 @@ export default () => {
   rulesForm.addEventListener(`submit`, (evt) => {
     onNextButtonClick(evt, game1());
   });
+  /*
 
   headerBack.addEventListener(`click`, (evt) => {
     onNextButtonClick(evt, greeting());
   });
+*/
+  headerBack.onclick = () => renderScreen(greeting());
 
   return rules;
 };

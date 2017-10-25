@@ -1,6 +1,8 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
-import onNextButtonClick from "../../utils/show-screen-handler";
-import {statsData} from "./stats-data";
+/* import onNextButtonClick from "../../utils/show-screen-handler";
+import {statsData} from "./stats-data";*/
+import renderScreen from "../../utils/screen-renderer";
+import greeting from "../greeting/greeting";
 
 export default() => {
   const stats = getElementFromTemplate(`
@@ -114,10 +116,14 @@ export default() => {
   </div>
 `);
   const headerBack = stats.querySelector(`.header__back`);
+  /*
 
   headerBack.addEventListener(`click`, (evt) => {
     onNextButtonClick(evt, statsData.jumpTo.back(statsData));
   });
+*/
+
+  headerBack.onclick = () => renderScreen(greeting());
 
   return stats;
 };
