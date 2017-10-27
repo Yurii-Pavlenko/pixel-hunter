@@ -1,11 +1,10 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
 import gameHeader from "../game-header";
 import gameStats from "../game-stats";
-import {game3Data, renderAnswers3} from "./game3-data";
+import {game3Data, renderAnswers3, checkNext3} from "./game3-data";
 import {goBack, stateData} from "../play-data";
 import {getPictures} from "../../utils/get-pictures";
 import pictures from "../../utils/pictures";
-import checkNext from "../../utils/check-next";
 
 const IMG_NUMBER = 3;
 export default () => {
@@ -42,7 +41,7 @@ export default () => {
         questions.push(imgArray[i].imgType);
       }
       renderAnswers3(questions, answers3);
-      checkNext(stateData, game3Data);
+      checkNext3(stateData);
     };
   });
 
