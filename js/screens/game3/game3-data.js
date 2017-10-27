@@ -1,11 +1,13 @@
 import {stateData} from "../play-data";
 import game1 from "../game1/game1";
+import stats from "../stats/stats";
+import renderScreen from "../../utils/screen-renderer";
 
 export const game3Data = {
   description: `Найдите рисунок среди изображений`,
-  jumpTo: {
+  /* jumpTo: {
     next: game1
-  }
+  }*/
 /*
   pictures: [
     {
@@ -63,5 +65,14 @@ export const renderAnswers3 = (questions, answers3) => {
     });
     stateData.answers[index] = `wrong`;
     stateData.lives -= 1;
+  }
+};
+
+export const checkNext3 = () => {
+  if (stateData.lives < 0) {
+    stateData.victory = false;
+    renderScreen(stats());
+  } else {
+    renderScreen(game1());
   }
 };
