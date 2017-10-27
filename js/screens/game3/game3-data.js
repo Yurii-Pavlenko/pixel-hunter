@@ -1,15 +1,12 @@
-import game1 from "../game1/game1";
-import greeting from "../greeting/greeting";
-import stats from "../stats/stats";
 import {stateData} from "../play-data";
+import game1 from "../game1/game1";
 
 export const game3Data = {
   description: `Найдите рисунок среди изображений`,
   jumpTo: {
-    next: game1,
-    back: greeting,
-    end: stats
-  },
+    next: game1
+  }
+/*
   pictures: [
     {
       imgSrc: `http://fotografy.ru/wp-content/uploads/2015/01/1711.jpg`,
@@ -48,13 +45,14 @@ export const game3Data = {
       imgSrc: `https://artrue.ru/wp-content/uploads/2017/02/yigal-ozeri-06.jpg`,
       imgType: `paint`
     }
-  ]
+  ]*/
 };
 
 export const renderAnswers3 = (questions, answers3) => {
-  if (answers3.forEach((elem, i) =>{
-    return elem === questions[i];
-  })) {
+  const isCorrect = questions.every((elem, i) => {
+    return elem === answers3[i];
+  });
+  if (isCorrect) {
     const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
     });

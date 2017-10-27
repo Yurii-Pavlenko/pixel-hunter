@@ -1,12 +1,9 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
 import onNextButtonClick from "../../utils/show-screen-handler";
-// import rulesData from "./rules-data";
 import game1 from "../game1/game1";
-import greeting from "../greeting/greeting";
-import renderScreen from "../../utils/screen-renderer";
+import {goBack} from "../play-data";
 
-export default () => {
-  const rules = getElementFromTemplate(`
+const rules = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -32,25 +29,22 @@ export default () => {
   </div>
 `);
 
-  const headerBack = rules.querySelector(`.back`);
-  const rulesForm = rules.querySelector(`.rules__form`);
-  const rulesInput = rulesForm.querySelector(`.rules__input`);
-  const rulesButton = rulesForm.querySelector(`.rules__button`);
+const headerBack = rules.querySelector(`.back`);
+const rulesForm = rules.querySelector(`.rules__form`);
+const rulesInput = rulesForm.querySelector(`.rules__input`);
+const rulesButton = rulesForm.querySelector(`.rules__button`);
 
-  rulesInput.addEventListener(`input`, () => {
-    rulesButton.disabled = !rulesInput.value;
-  });
+rulesInput.addEventListener(`input`, () => {
+  rulesButton.disabled = !rulesInput.value;
+});
 
-  rulesForm.addEventListener(`submit`, (evt) => {
-    onNextButtonClick(evt, game1());
-  });
-  /*
+rulesForm.addEventListener(`submit`, (evt) => {
+  onNextButtonClick(evt, game1());
+});
 
-  headerBack.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, greeting());
-  });
-*/
-  headerBack.onclick = () => renderScreen(greeting());
-
-  return rules;
+headerBack.onclick = () => {
+  return goBack();
 };
+
+export default rules;
+

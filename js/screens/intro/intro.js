@@ -1,10 +1,8 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
-import onNextButtonClick from "../../utils/show-screen-handler";
 import greeting from "../greeting/greeting";
+import renderScreen from "../../utils/screen-renderer";
 
-export default () => {
-
-  const intro = getElementFromTemplate(`
+const intro = getElementFromTemplate(`
 <div id="main" class="central__content">
   <div id="intro" class="intro">
   <h1 class="intro__asterisk">*</h1>
@@ -13,11 +11,10 @@ export default () => {
 </div>
 `);
 
-  const asteriskButton = intro.querySelector(`.intro__asterisk`);
+const asteriskButton = intro.querySelector(`.intro__asterisk`);
 
-  asteriskButton.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, greeting());
-  });
-
-  return intro;
+asteriskButton.onclick = () => {
+  renderScreen(greeting);
 };
+
+export default intro;

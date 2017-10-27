@@ -1,10 +1,8 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
-import onNextButtonClick from "../../utils/show-screen-handler";
-// import greetingData from "./greeting-data";
 import rules from "../rules/rules";
+import renderScreen from "../../utils/screen-renderer";
 
-export default () => {
-  const greeting = getElementFromTemplate(`
+const greeting = getElementFromTemplate(`
  <div class="greeting central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
@@ -20,11 +18,10 @@ export default () => {
   </div>
 `);
 
-  const greetingContinue = greeting.querySelector(`.greeting__continue`);
+const greetingContinue = greeting.querySelector(`.greeting__continue`);
 
-  greetingContinue.addEventListener(`click`, (evt) => {
-    onNextButtonClick(evt, rules());
-  });
-
-  return greeting;
+greetingContinue.onclick = () => {
+  renderScreen(rules);
 };
+
+export default greeting;

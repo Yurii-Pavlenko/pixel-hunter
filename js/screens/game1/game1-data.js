@@ -1,16 +1,15 @@
 import game2 from "../game2/game2";
-import greeting from "../greeting/greeting";
-import stats from "../stats/stats";
+// import greeting from "../greeting/greeting";
+// import stats from "../stats/stats";
 import {stateData} from "../play-data";
-// import renderScreen from "../../utils/screen-renderer";
+
 
 export const game1Data = {
-  description: `Угадайте для каждого изображения фото или рисунок?`,
+  // description: `Угадайте для каждого изображения фото или рисунок?`,
   jumpTo: {
     next: game2,
-    back: greeting,
-    end: stats
-  },
+  }
+  /* ,
   pictures: [
     {
       imgSrc: `https://k42.kn3.net/CF42609C8.jpg`,
@@ -45,35 +44,27 @@ export const game1Data = {
       imgSrc: `http://cdn.fishki.net/upload/post/201601/13/1810183/1452629978_02.jpg`,
       imgType: `photo`
     }
-  ]
+  ]*/
 };
 
 
-
-/* const quantity = {
-  unknownAnswers: data.state.answers.filter((element) =>{
-    return element === `unknown`;
-  }),
-  wrongAnswers: data.state.answers.filter((element) =>{
-    return element === `wrong`;
-  })
-};*/
-
-export const renderAnswers1 = (question1, question2) => {
+export const renderAnswers1 = (question1, question2, imgArray) => {
   let answer1 = false;
   let answer2 = false;
 
-  for (let i = 0; i < question1.length; i++) {
-    if (question1[i].checked) {
-      answer1 = question1[i].getAttribute(`value`);
+  for (const item of question1) {
+    if (item.checked) {
+      answer1 = item.getAttribute(`value`);
     }
   }
-  for (let i = 0; i < question2.length; i++) {
-    if (question2[i].checked) {
-      answer2 = question2[i].getAttribute(`value`);
+
+  for (const item of question2) {
+    if (item.checked) {
+      answer2 = item.getAttribute(`value`);
     }
   }
-  if (answer1 === game1Data.pictures[stateData.game].imgType && answer2 === game1Data.pictures[stateData.game + 1].imgType) {
+
+  if (answer1 === imgArray[0].imgType && answer2 === imgArray[1].imgType) {
     const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
     });

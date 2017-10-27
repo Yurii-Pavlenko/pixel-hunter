@@ -1,11 +1,26 @@
-const initialData = {
+const INITIAL_DATA = {
   game: 0,
   time: 30,
   lives: 3,
-  answers: [`unknown`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`]
+  answers: new Array(10).fill(`unknown`),
+  victory: false
 };
 
-export let stateData = JSON.parse(JSON.stringify(initialData));
+export let stateData = JSON.parse(JSON.stringify(INITIAL_DATA));
+
+import renderScreen from "../utils/screen-renderer";
+import greeting from "./greeting/greeting";
+
+const resetStateData = () => {
+  stateData = JSON.parse(JSON.stringify(INITIAL_DATA));
+};
+
+export const goBack = (state) => {
+  if (state) {
+    resetStateData();
+  }
+  renderScreen(greeting);
+};
 
 const getOffGame = 3;
 

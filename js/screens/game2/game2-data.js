@@ -1,15 +1,11 @@
-/* import game3 from "../game3/game3";
-import greeting from "../greeting/greeting";
-import stats from "../stats/stats";*/
+import game3 from "../game3/game3";
 import {stateData} from "../play-data";
 
 export const game2Date = {
-/*  description: `Угадай, фото или рисунок?`,
+/*  description: `Угадай, фото или рисунок?`, */
   jumpTo: {
-    next: game3,
-    back: greeting,
-    end: stats
-  },*/
+    next: game3
+  }/* ,
   pictures: [
     {
       imgSrc: `https://artrue.ru/wp-content/uploads/2017/02/yigal-ozeri-08.jpg`,
@@ -63,10 +59,10 @@ export const game2Date = {
       imgSrc: `https://artrue.ru/wp-content/uploads/2017/02/yigal-ozeri-07.jpg`,
       imgType: `paint`
     }
-  ]
+  ]*/
 };
 
-export const renderAnswers2 = (question) => {
+export const renderAnswers2 = (question, picture) => {
   let answer = false;
 
   for (let i = 0; i < question.length; i++) {
@@ -75,7 +71,7 @@ export const renderAnswers2 = (question) => {
     }
   }
 
-  if (answer === game2Date.pictures[stateData.game].imgType) {
+  if (answer === picture.imgType) {
     const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
     });
