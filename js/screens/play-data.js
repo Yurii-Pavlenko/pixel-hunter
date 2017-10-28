@@ -1,6 +1,6 @@
 const INITIAL_DATA = {
   gameNumber: 0,
-  time: 9,
+  time: 23,
   lives: 3,
   answers: new Array(10).fill(`unknown`),
   victory: false
