@@ -62,7 +62,7 @@ export const game2Date = {
   ]*/
 };
 
-export const renderAnswers2 = (question, picture) => {
+export const renderAnswers2 = (question, picture, answerType) => {
   let answer = false;
 
   for (let i = 0; i < question.length; i++) {
@@ -75,7 +75,7 @@ export const renderAnswers2 = (question, picture) => {
     const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
     });
-    stateData.answers[index] = `correct`;
+    stateData.answers[index] = answerType;
   } else {
     const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
@@ -83,4 +83,5 @@ export const renderAnswers2 = (question, picture) => {
     stateData.answers[index] = `wrong`;
     stateData.lives -= 1;
   }
+  stateData.gameNumber += 1;
 };

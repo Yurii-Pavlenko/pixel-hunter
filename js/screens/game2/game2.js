@@ -2,7 +2,7 @@ import getElementFromTemplate from "../../utils/get-element-from-html";
 import gameHeader from "../game-header";
 import gameStats from "../game-stats";
 import {game2Date, renderAnswers2} from "./game2-data";
-import {stateData, goBack} from "../play-data";
+import {stateData, goBack, chooseAnswerType} from "../play-data";
 import {getPictures} from "../../utils/get-pictures";
 import pictures from "../../utils/pictures";
 import checkNext from "../../utils/check-next";
@@ -35,7 +35,7 @@ export default () => {
   const question1 = game2.querySelectorAll(`input[name=question1]`);
 
   gameContent.addEventListener(`change`, () =>{
-    renderAnswers2(question1, picture);
+    renderAnswers2(question1, picture, chooseAnswerType());
     checkNext(stateData, game2Date);
   });
 

@@ -48,7 +48,7 @@ export const game1Data = {
 };
 
 
-export const renderAnswers1 = (question1, question2, imgArray) => {
+export const renderAnswers1 = (question1, question2, imgArray, answerType) => {
   let answer1 = false;
   let answer2 = false;
 
@@ -68,7 +68,7 @@ export const renderAnswers1 = (question1, question2, imgArray) => {
     const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
     });
-    stateData.answers[index] = `correct`;
+    stateData.answers[index] = answerType;
   } else {
     const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
@@ -76,5 +76,6 @@ export const renderAnswers1 = (question1, question2, imgArray) => {
     stateData.answers[index] = `wrong`;
     stateData.lives -= 1;
   }
+  stateData.gameNumber += 1;
 };
 

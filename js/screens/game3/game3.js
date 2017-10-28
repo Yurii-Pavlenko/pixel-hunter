@@ -2,7 +2,7 @@ import getElementFromTemplate from "../../utils/get-element-from-html";
 import gameHeader from "../game-header";
 import gameStats from "../game-stats";
 import {game3Data, renderAnswers3, checkNext3} from "./game3-data";
-import {goBack, stateData} from "../play-data";
+import {chooseAnswerType, goBack, stateData} from "../play-data";
 import {getPictures} from "../../utils/get-pictures";
 import pictures from "../../utils/pictures";
 
@@ -40,7 +40,7 @@ export default () => {
       for (let i = 0; i < answers3.length; i++) {
         questions.push(imgArray[i].imgType);
       }
-      renderAnswers3(questions, answers3);
+      renderAnswers3(questions, answers3, chooseAnswerType());
       checkNext3(stateData);
     };
   });

@@ -1,6 +1,6 @@
 const INITIAL_DATA = {
-  game: 0,
-  time: 30,
+  gameNumber: 0,
+  time: 9,
   lives: 3,
   answers: new Array(10).fill(`unknown`),
   victory: false
@@ -22,21 +22,14 @@ export const goBack = (state) => {
   renderScreen(greeting);
 };
 
-const getOffGame = 3;
-
-const quantity = {
-  unknownAnswers: stateData.answers.filter((element) =>{
-    return element === `unknown`;
-  }),
-  wrongAnswers: stateData.answers.filter((element) =>{
-    return element === `wrong`;
-  })
-};
-
-export const isLives = () => {
-  return quantity.wrongAnswers.length === getOffGame;
-};
-
-export const isQuestions = () => {
-  return !quantity.unknownAnswers.length;
+export const chooseAnswerType = () => {
+  let answerType;
+  if (stateData.time > 20) {
+    answerType = `fast`;
+  } else if (stateData.time <= 20 && stateData.time >= 10) {
+    answerType = `correct`;
+  } else {
+    answerType = `slow`;
+  }
+  return answerType;
 };

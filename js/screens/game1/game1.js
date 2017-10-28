@@ -1,7 +1,7 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
 import gameHeader from "../game-header";
 import gameStats from "../game-stats";
-import {stateData, goBack} from "../play-data";
+import {stateData, goBack, chooseAnswerType} from "../play-data";
 import {game1Data, renderAnswers1} from "./game1-data";
 import {getPictures} from "../../utils/get-pictures";
 import pictures from "../../utils/pictures";
@@ -54,7 +54,7 @@ export default () => {
 
   gameContent.addEventListener(`change`, () => {
     if (needQuantity() === ENOUGH_QUANTITY) {
-      renderAnswers1(question1, question2, imgArray);
+      renderAnswers1(question1, question2, imgArray, chooseAnswerType());
       checkNext(stateData, game1Data);
     }
   });
