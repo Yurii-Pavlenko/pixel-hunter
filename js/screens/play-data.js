@@ -1,3 +1,5 @@
+import greeting from "./greeting/greeting";
+
 const INITIAL_DATA = {
   gameNumber: 0,
   time: 23,
@@ -9,7 +11,7 @@ const INITIAL_DATA = {
 export let stateData = JSON.parse(JSON.stringify(INITIAL_DATA));
 
 import renderScreen from "../utils/screen-renderer";
-import greeting from "./greeting/greeting";
+
 
 const resetStateData = () => {
   stateData = JSON.parse(JSON.stringify(INITIAL_DATA));
