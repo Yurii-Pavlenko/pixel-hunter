@@ -1,4 +1,4 @@
-import showScreen from "./utils/screen-renderer";
-import intro from "./screens/intro";
+import renderScreen from "./utils/screen-renderer";
+import intro from "./screens/intro/intro";
 
-showScreen(intro);
+renderScreen(intro);

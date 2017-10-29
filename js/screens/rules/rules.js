@@ -1,7 +1,7 @@
-import getElementFromTemplate from "../utils/get-element-from-html";
-import onNextButtonClick from "../utils/show-screen-handler";
-import game1 from "./game1";
-import returnToGreeting from "../utils/return-to-greeting";
+import getElementFromTemplate from "../../utils/get-element-from-html";
+import onNextButtonClick from "../../utils/show-screen-handler";
+import game1 from "../game1/game1";
+import {goBack} from "../play-data";
 
 const rules = getElementFromTemplate(`
   <header class="header">
@@ -21,25 +21,15 @@ const rules = getElementFromTemplate(`
       На каждую попытку отводится 30 секунд.<br>
       Ошибиться можно не более 3 раз.<br>
       <br>
-      Готовы?
-    </p>
+      Готовы?</p>
     <form class="rules__form">
       <input class="rules__input" type="text" placeholder="Ваше Имя">
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
   </div>
-  <footer class="footer">
-    <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
-    <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2016</span>
-    <div class="footer__social-links">
-      <a href="https://twitter.com/htmlacademy_ru" class="social-link  social-link--tw">Твиттер</a>
-      <a href="https://www.instagram.com/htmlacademy/" class="social-link  social-link--ins">Инстаграм</a>
-      <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
-      <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
-    </div>
-  </footer>
 `);
-const headerBack = rules.querySelector(`.header__back`);
+
+const headerBack = rules.querySelector(`.back`);
 const rulesForm = rules.querySelector(`.rules__form`);
 const rulesInput = rulesForm.querySelector(`.rules__input`);
 const rulesButton = rulesForm.querySelector(`.rules__button`);
@@ -49,9 +39,12 @@ rulesInput.addEventListener(`input`, () => {
 });
 
 rulesForm.addEventListener(`submit`, (evt) => {
-  onNextButtonClick(evt, game1);
+  onNextButtonClick(evt, game1());
 });
 
-returnToGreeting(headerBack);
+headerBack.onclick = () => {
+  return goBack();
+};
 
 export default rules;
+
