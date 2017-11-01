@@ -3,7 +3,7 @@ import AbstractView from "../../utils/abstract-view";
 export default class RulesView extends AbstractView {
 
   get template() {
-    return String.raw`<header class="header">
+    return `<header class="header">
     <div class="header__back">
       <button class="back">
         <img src="img/arrow_left.svg" width="45" height="45" alt="Back">

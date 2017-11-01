@@ -3,7 +3,7 @@ import AbstractView from "../../utils/abstract-view";
 export default class GreetingView extends AbstractView {
 
   get template() {
-    return String.raw`<div class="greeting central--blur">
+    return `<div class="greeting central--blur">
       <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
       <h1 class="greeting__asterisk">*</h1>
       <div class="greeting__challenge">

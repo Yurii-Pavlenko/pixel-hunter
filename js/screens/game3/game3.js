@@ -1,5 +1,5 @@
 import getElementFromTemplate from "../../utils/get-element-from-html";
-import gameHeader from "../game-header";
+import gameHeader from "../game-header-view";
 import gameStats from "../game-stats";
 import {game3Data, renderAnswers3, checkNext3} from "./game3-data";
 import {chooseAnswerType, goBack, stateData} from "../play-data";

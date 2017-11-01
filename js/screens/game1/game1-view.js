@@ -1,22 +1,26 @@
 import AbstractView from "../../utils/abstract-view";
-import gameHeader from "../game-header";
-import {stateData} from "../play-data";
-import {getPictures} from "../../utils/get-pictures";
-import pictures from "../../utils/pictures";
-import gameStats from "../game-stats";
-
-const IMG_NUMBER = 2;
-const imgArray = getPictures(pictures, IMG_NUMBER);
+import HeaderView from "../game-header-view";
+import {renderAnswers1} from "./game1-data";
+import {chooseAnswerType} from "../play-data";
 
 export default class Game1View extends AbstractView {
 
+  constructor(stateData, gameStats, img1, img2) {
+    super();
+    this.stateData = stateData;
+    this.header = new HeaderView(this.stateData);
+    this.img1 = img1;
+    this.img2 = img2;
+    this.gameStats = gameStats(this.stateData);
+  }
+
   get template() {
-    return String.raw`${gameHeader(stateData)}
+    return `${this.header.template}
   <div class="game">
     <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
     <form class="game__content">
       <div class="game__option">
-        <img src=${imgArray[0].imgSrc} alt="Option 1" width="468" height="458">
+        <img src=${this.img1.imgSrc} alt="Option 1" width="468" height="458">
         <label class="game__answer game__answer--photo">
           <input name="question1" type="radio" value="photo">
           <span>Фото</span>
@@ -27,7 +31,7 @@ export default class Game1View extends AbstractView {
         </label>
       </div>
       <div class="game__option">
-        <img src=${imgArray[1].imgSrc} alt="Option 2" width="468" height="458">
+        <img src=${this.img2.imgSrc} alt="Option 2" width="468" height="458">
         <label class="game__answer  game__answer--photo">
           <input name="question2" type="radio" value="photo">
           <span>Фото</span>
@@ -38,7 +42,7 @@ export default class Game1View extends AbstractView {
         </label>
       </div>
     </form>
-    ${gameStats(stateData)}
+    ${this.gameStats}
   </div>`;
   }
 
@@ -53,21 +57,14 @@ export default class Game1View extends AbstractView {
       return gameContent.querySelectorAll(`input[type="radio"]:checked`).length;
     };
 
-    gameContent.addEventListener(`change`, this.onButtonClick);
-
-
-    headerBack.addEventListener(`click`, this.onBackClick);
-    /*
-      () => {
+    gameContent.addEventListener(`change`, () => {
       if (needQuantity() === ENOUGH_QUANTITY) {
-        renderAnswers1(question1, question2, imgArray, chooseAnswerType());
-        checkNext(stateData, game1Data);
+        renderAnswers1(question1, question2, this.img1, this.img2, chooseAnswerType());
+        this.onButtonClick();
       }
     });
 
-    headerBack.onclick = () => {
-      goBack(stateData);
-    };*/
+    headerBack.addEventListener(`click`, this.onBackClick);
   }
 
   onButtonClick() {
@@ -77,6 +74,5 @@ export default class Game1View extends AbstractView {
   onBackClick() {
 
   }
-
 }
 

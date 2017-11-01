@@ -1,6 +1,4 @@
 import game2 from "../game2/game2";
-// import greeting from "../greeting/greeting";
-// import stats from "../stats/stats";
 import {stateData} from "../play-data";
 
 
@@ -12,7 +10,7 @@ export const game1Data = {
 };
 
 
-export const renderAnswers1 = (question1, question2, imgArray, answerType) => {
+export const renderAnswers1 = (question1, question2, img1, img2, answerType) => {
   let answer1 = false;
   let answer2 = false;
 
@@ -28,7 +26,7 @@ export const renderAnswers1 = (question1, question2, imgArray, answerType) => {
     }
   }
 
-  if (answer1 === imgArray[0].imgType && answer2 === imgArray[1].imgType) {
+  if (answer1 === img1.imgType && answer2 === img2.imgType) {
     const index = stateData.answers.findIndex((element) => {
       return element === `unknown`;
     });
