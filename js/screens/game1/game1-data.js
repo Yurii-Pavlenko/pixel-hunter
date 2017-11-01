@@ -9,22 +9,32 @@ export const game1Data = {
   IMG_NUMBER: 2
 };
 
+const checkAnswer = (answer, question) => {
+  for (const item of question) {
+    if (item.checked) {
+      answer = item.getAttribute(`value`);
+    }
+  }
+};
+
 
 export const renderAnswers1 = (question1, question2, img1, img2, answerType) => {
   let answer1 = false;
   let answer2 = false;
 
-  for (const item of question1) {
+  /* for (const item of question1) {
     if (item.checked) {
       answer1 = item.getAttribute(`value`);
     }
-  }
+  }*/
+  checkAnswer(answer1, question1);
+  checkAnswer(answer2, question2);
 
-  for (const item of question2) {
+  /*  for (const item of question2) {
     if (item.checked) {
       answer2 = item.getAttribute(`value`);
     }
-  }
+  }*/
 
   if (answer1 === img1.imgType && answer2 === img2.imgType) {
     const index = stateData.answers.findIndex((element) => {
