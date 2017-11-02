@@ -5,8 +5,7 @@ import game1 from "../game1/game1";
 
 const rules = new RulesView();
 
-rules.onButtonClick = (evt) => {
-  evt.preventDefault();
+rules.onButtonClick = () => {
   renderScreen(game1());
 };
 

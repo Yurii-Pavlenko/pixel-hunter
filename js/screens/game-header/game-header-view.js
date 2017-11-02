@@ -1,4 +1,5 @@
-import AbstractView from "../utils/abstract-view";
+import AbstractView from "../../utils/abstract-view";
+import headerBack from "./header-back";
 
 export default class HeaderView extends AbstractView {
   constructor(stateData) {
@@ -9,12 +10,7 @@ export default class HeaderView extends AbstractView {
   get template() {
     return `
       <header class="header">
-        <div class="header__back">
-      <button class="back">
-        <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-        <img src="img/logo_small.svg" width="101" height="44">
-      </button>
-    </div>
+        ${headerBack}
         <h1 class="game__timer">${this.stateData.time}</h1>
         <div class="game__lives">
         ${new Array(3 - this.stateData.lives)

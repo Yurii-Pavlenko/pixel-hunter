@@ -1,5 +1,5 @@
 import AbstractView from "../../utils/abstract-view";
-import HeaderView from "../game-header-view";
+import HeaderView from "../game-header/game-header-view";
 import {renderAnswers1} from "./game1-data";
 import {chooseAnswerType} from "../play-data";
 
