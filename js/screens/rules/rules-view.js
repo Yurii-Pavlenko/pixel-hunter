@@ -35,11 +35,15 @@ export default class RulesView extends AbstractView {
     const rulesInput = this.element.querySelector(`.rules__input`);
     const rulesButton = this.element.querySelector(`.rules__button`);
 
-    rulesInput.addEventListener(`input`, () => {
+    rulesInput.addEventListener(`input`, (evt) => {
+      evt.preventDefault();
       rulesButton.disabled = !rulesInput.value;
     });
 
-    rulesForm.addEventListener(`submit`, this.onButtonClick);
+    rulesForm.addEventListener(`submit`, (evt) => {
+      evt.preventDefault();
+      this.onButtonClick();
+    });
 
     headerBack.addEventListener(`click`, this.onBackClick);
   }
