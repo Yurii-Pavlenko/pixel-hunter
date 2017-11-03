@@ -13,49 +13,20 @@ export const game1Data = {
   IMG_NUMBER: 2
 };
 
-/* const checkAnswer = (question) => {
+const checkAnswer = (question) => {
   let answer = false;
-  for (const item of question) {
-    if (item.checked) {
-      answer = item.getAttribute(`value`);
-    } else {
-      answer = false;
+  for (let i = 0; i < question.length; i++) {
+    if (question[i].checked) {
+      answer = question[i].getAttribute(`value`);
     }
   }
   return answer;
-};*/
-/*
-const checkAnswer = (question) => {
-  let answer = false;
-  question.forEach((item) => {
-    if (item.checked) {
-      answer = item.getAttribute(`value`);
-    }
-    return answer;
-  });
-};*/
-
+};
 
 export const renderAnswers1 = (question1, question2, img1, img2, answerType) => {
-  let answer1 = false;
-  let answer2 = false;
 
-  /*
-  answer1 = checkAnswer(question1);
-  answer2 = checkAnswer(question2);
-*/
-
-  for (const item of question1) {
-    if (item.checked) {
-      answer1 = item.getAttribute(`value`);
-    }
-  }
-
-  for (const item of question2) {
-    if (item.checked) {
-      answer2 = item.getAttribute(`value`);
-    }
-  }
+  let answer1 = checkAnswer(question1);
+  let answer2 = checkAnswer(question2);
 
   if (answer1 === img1.imgType && answer2 === img2.imgType) {
     const index = stateData.answers.findIndex((element) => {
